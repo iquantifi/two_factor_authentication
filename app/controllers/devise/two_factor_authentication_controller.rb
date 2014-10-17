@@ -26,12 +26,12 @@ class Devise::TwoFactorAuthenticationController < DeviseController
         resource.errors.add(:base, 'Access completely denied as you have reached your attempts limit.')
         respond_to do |format|
           format.html { render :max_login_attempts_reached }
-          format.json { render nothing: true, status: :forbidden }
+          format.json { render json: :nothing, status: :forbidden }
         end
       else
         respond_to do |format|
           format.html { render :show }
-          format.json { render nothing: true, status: :forbidden }
+          format.json { render json: :nothing, status: :forbidden }
         end
       end
     end
@@ -51,7 +51,7 @@ class Devise::TwoFactorAuthenticationController < DeviseController
         resource.errors.add(:base, 'Access completely denied as you have reached your attempts limit.')
         respond_to do |format|
           format.html { render :max_login_attempts_reached and return }
-          format.json { render nothing: true, status: :forbidden and return }
+          format.json { render json: :nothing, status: :forbidden and return }
         end
       end
     end
